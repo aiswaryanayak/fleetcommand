@@ -49,4 +49,4 @@ WORKDIR /app/backend
 EXPOSE ${PORT:-10000}
 
 # Run with gunicorn + uvicorn workers for production
-CMD ["sh", "-c", "gunicorn main:app --bind 0.0.0.0:${PORT:-10000} --workers 2 --worker-class uvicorn.workers.UvicornWorker --timeout 120 --access-logfile -"]
+CMD ["sh", "-c", "gunicorn main:app --bind 0.0.0.0:${PORT:-10000} --workers 1 --worker-class uvicorn.workers.UvicornWorker --timeout 120 --access-logfile -"]
