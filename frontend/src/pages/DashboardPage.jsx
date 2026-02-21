@@ -55,6 +55,17 @@ export default function DashboardPage() {
           <option value="Bike">Bike</option>
         </select>
         <select
+          value={filters.status}
+          onChange={(e) => setFilters(f => ({ ...f, status: e.target.value }))}
+          className="px-3 py-2 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+        >
+          <option value="">All Statuses</option>
+          <option value="Available">Available</option>
+          <option value="On Trip">On Trip</option>
+          <option value="In Shop">In Shop</option>
+          <option value="Retired">Retired</option>
+        </select>
+        <select
           value={filters.region}
           onChange={(e) => setFilters(f => ({ ...f, region: e.target.value }))}
           className="px-3 py-2 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20"
