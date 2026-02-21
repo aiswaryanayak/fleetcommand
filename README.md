@@ -2,6 +2,22 @@
 
 A production-quality, rule-driven Fleet Management ERP web application built for a competitive hackathon. It replaces inefficient manual fleet logbooks with a centralized digital hub that optimizes the lifecycle of a delivery fleet, monitors driver safety, and tracks financial performance.
 
+## 🔗 Live Demo & Presentation
+
+| | Link |
+|---|---|
+| **Live App** | [https://fleetcommand-y2f9.onrender.com](https://fleetcommand-y2f9.onrender.com/) |
+| **Presentation Video** | [Watch on YouTube](https://youtu.be/SrYjqd1RbC8) |
+
+> **Demo Credentials** — The app auto-seeds 4 users on first launch:
+>
+> | Role | Email | Password |
+> |------|-------|----------|
+> | Fleet Manager | `fleet@demo.com` | `password123` |
+> | Dispatcher | `dispatch@demo.com` | `password123` |
+> | Safety Officer | `safety@demo.com` | `password123` |
+> | Financial Analyst | `finance@demo.com` | `password123` |
+
 ---
 
 ## Architecture
