@@ -7,7 +7,6 @@ import jwt
 from passlib.context import CryptContext
 from config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 
-# ── Password hashing ─────────────────────────────────────────────────────────
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 

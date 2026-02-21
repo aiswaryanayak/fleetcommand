@@ -1,6 +1,3 @@
-/**
- * Reusable status badge component with color coding.
- */
 const STATUS_STYLES = {
   // Vehicle statuses
   'Available': 'bg-emerald-100 text-emerald-700 border-emerald-200',

@@ -1,7 +1,3 @@
-/**
- * Maintenance & Service Logs page.
- * Creating a log auto-sets vehicle to "In Shop".
- */
 import { useState, useEffect } from 'react';
 import { maintenanceAPI, vehiclesAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';

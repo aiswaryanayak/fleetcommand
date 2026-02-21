@@ -1,6 +1,3 @@
-/**
- * Reusable data table with sorting, search, and responsive design.
- */
 import { useState, useMemo } from 'react';
 import { Search, ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react';
 

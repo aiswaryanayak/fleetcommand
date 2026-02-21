@@ -1,7 +1,3 @@
-/**
- * Analytics & Reports — Operational analytics with charts and one-click exports.
- * Accessible to: Fleet Manager, Financial Analyst
- */
 import { useState, useEffect, useRef } from 'react';
 import { financeAPI, vehiclesAPI } from '../services/api';
 import PageHeader from '../components/PageHeader';

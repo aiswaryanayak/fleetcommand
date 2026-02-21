@@ -1,10 +1,3 @@
-"""
-Finance service – fuel logs, expenses, and financial analytics.
-Handles:
-  - Fuel log CRUD
-  - Expense CRUD
-  - Financial computations (ROI, efficiency, cost summaries)
-"""
 from datetime import date
 from sqlalchemy.orm import Session
 from sqlalchemy import func as sql_func, extract
@@ -17,7 +10,6 @@ from models.maintenance import MaintenanceLog
 from schemas.finance import FuelLogCreate, ExpenseCreate
 
 
-# ── Fuel Logs ─────────────────────────────────────────────────────────────────
 
 def get_all_fuel_logs(db: Session, vehicle_id: int = None):
     query = db.query(FuelLog)
@@ -60,7 +52,6 @@ def enrich_fuel_log(db: Session, log: FuelLog) -> dict:
     }
 
 
-# ── Expenses ──────────────────────────────────────────────────────────────────
 
 def get_all_expenses(db: Session, vehicle_id: int = None, category: str = None):
     query = db.query(Expense)
@@ -105,7 +96,6 @@ def enrich_expense(db: Session, expense: Expense) -> dict:
     }
 
 
-# ── Financial Analytics ───────────────────────────────────────────────────────
 
 def get_financial_summary(db: Session) -> dict:
     """Compute full financial summary across the fleet."""

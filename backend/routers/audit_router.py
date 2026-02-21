@@ -1,7 +1,3 @@
-"""
-Audit router – read-only access to the audit trail.
-Fleet Manager and Financial Analyst can view audit logs.
-"""
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from typing import List, Optional

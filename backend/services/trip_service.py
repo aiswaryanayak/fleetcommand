@@ -1,18 +1,3 @@
-"""
-Trip service – core workflow engine.
-Implements the full trip lifecycle with atomic state transitions:
-  Draft → Dispatched → Completed | Cancelled
-
-All state-changing operations use a SINGLE db.commit() to guarantee
-atomicity across trip, vehicle, and driver status updates.
-
-Validation rules enforced:
-  - cargo_weight <= vehicle.max_capacity
-  - driver license must not be expired
-  - driver.status must be "On Duty"
-  - vehicle.status must be "Available"
-  - No double-assignment of vehicles or drivers
-"""
 import logging
 from datetime import datetime, timezone
 from sqlalchemy.orm import Session
@@ -63,7 +48,6 @@ def create_trip(db: Session, data: TripCreate) -> Trip:
     if not driver:
         raise HTTPException(status_code=404, detail="Driver not found")
 
-    # ── Validation rules ──────────────────────────────────────────────────
     if data.cargo_weight > vehicle.max_capacity:
         raise HTTPException(
             status_code=400,
@@ -88,7 +72,6 @@ def create_trip(db: Session, data: TripCreate) -> Trip:
             detail=f"Vehicle '{vehicle.name}' is not Available (current: {vehicle.status})"
         )
 
-    # ── Prevent double-assignment ─────────────────────────────────────────
     active_vehicle_trip = db.query(Trip).filter(
         Trip.vehicle_id == data.vehicle_id,
         Trip.status.in_([TripStatus.DISPATCHED.value])
@@ -136,7 +119,6 @@ def dispatch_trip(db: Session, trip_id: int) -> Trip:
     if driver.status != DriverStatus.ON_DUTY.value:
         raise HTTPException(status_code=400, detail=f"Driver is not On Duty (current: {driver.status})")
 
-    # ── Atomic state transition ───────────────────────────────────────────
     trip.status = TripStatus.DISPATCHED.value
     vehicle.status = VehicleStatus.ON_TRIP.value
     driver.status = DriverStatus.ON_TRIP.value
@@ -162,7 +144,6 @@ def complete_trip(db: Session, trip_id: int, data: TripComplete) -> Trip:
     vehicle = db.query(Vehicle).filter(Vehicle.id == trip.vehicle_id).first()
     driver = db.query(Driver).filter(Driver.id == trip.driver_id).first()
 
-    # ── Atomic state transition ───────────────────────────────────────────
     trip.status = TripStatus.COMPLETED.value
     trip.distance = data.distance
     if data.revenue is not None:

@@ -1,6 +1,3 @@
-/**
- * Vehicle Registry – CRUD management for fleet assets.
- */
 import { useState, useEffect } from 'react';
 import { vehiclesAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';

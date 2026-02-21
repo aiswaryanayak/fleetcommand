@@ -1,8 +1,3 @@
-"""
-Maintenance router – service log CRUD with RBAC and audit logging.
-Fleet Manager: full CRUD
-Financial Analyst: read-only
-"""
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from typing import List

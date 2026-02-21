@@ -1,9 +1,3 @@
-"""
-RBAC middleware & dependencies.
-Provides FastAPI dependencies for:
-  - get_current_user: extracts & validates JWT from Authorization header
-  - require_roles: factory that returns a dependency restricting by role list
-"""
 from typing import List
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -13,7 +7,6 @@ from database import get_db
 from auth import decode_access_token
 from models.user import User
 
-# ── Bearer token extraction ──────────────────────────────────────────────────
 security = HTTPBearer()
 
 

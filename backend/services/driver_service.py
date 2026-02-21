@@ -1,10 +1,3 @@
-"""
-Driver service – business logic for driver management and safety scoring.
-Enforces:
-  - License expiry blocking
-  - Safety score auto-calculation
-  - Completion rate tracking
-"""
 from datetime import date
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status

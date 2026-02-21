@@ -1,7 +1,3 @@
-"""
-Dashboard service – aggregates KPIs for the Command Center.
-All metrics are computed live from the database.
-"""
 from sqlalchemy.orm import Session
 from sqlalchemy import func as sql_func
 from models.vehicle import Vehicle, VehicleStatus

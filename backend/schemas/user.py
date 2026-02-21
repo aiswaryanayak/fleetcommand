@@ -6,7 +6,6 @@ from typing import Optional
 from datetime import datetime
 
 
-# ── Auth ──────────────────────────────────────────────────────────────────────
 class LoginRequest(BaseModel):
     email: EmailStr
     password: str
@@ -22,7 +21,6 @@ class ForgotPasswordRequest(BaseModel):
     email: EmailStr
 
 
-# ── User CRUD ─────────────────────────────────────────────────────────────────
 class UserCreate(BaseModel):
     email: EmailStr
     password: str

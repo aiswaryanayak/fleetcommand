@@ -1,6 +1,3 @@
-/**
- * Expense & Fuel Logging page – record and view financial transactions.
- */
 import { useState, useEffect } from 'react';
 import { financeAPI, vehiclesAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';

@@ -1,7 +1,3 @@
-"""
-Audit service – records all state-changing operations for traceability.
-Every trip lifecycle action, vehicle change, and CRUD mutation is logged.
-"""
 import logging
 from sqlalchemy.orm import Session
 from models.audit_log import AuditLog
@@ -9,7 +5,6 @@ from models.audit_log import AuditLog
 logger = logging.getLogger("fleet.audit")
 
 
-# ── Canonical action constants ────────────────────────────────────────────────
 class Actions:
     # Trip lifecycle
     CREATE_TRIP = "CREATE_TRIP"

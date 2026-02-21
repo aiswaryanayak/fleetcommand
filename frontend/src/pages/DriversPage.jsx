@@ -1,8 +1,3 @@
-/**
- * Driver Performance & Safety page.
- * Safety Officer: full CRUD
- * Fleet Manager, Dispatcher: read-only
- */
 import { useState, useEffect } from 'react';
 import { driversAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';

@@ -1,7 +1,3 @@
-"""
-Database seeder – populates initial demo data for the hackathon.
-Creates users for each role, vehicles, drivers, and sample trips.
-"""
 from datetime import date, datetime, timedelta, timezone
 from sqlalchemy.orm import Session
 from database import SessionLocal, engine, Base
@@ -28,7 +24,6 @@ def seed():
 
         print("Seeding database...")
 
-        # ── Users (one per role) ──────────────────────────────────────────
         users = [
             User(email="fleet@demo.com", hashed_password=hash_password("password123"),
                  full_name="Alex Fleet Manager", role="fleet_manager"),
@@ -42,7 +37,6 @@ def seed():
         db.add_all(users)
         db.flush()
 
-        # ── Vehicles ─────────────────────────────────────────────────────
         vehicles = [
             Vehicle(name="Thunder Hauler", model="Volvo FH16", license_plate="TRK-001",
                     max_capacity=18000, odometer=45200, vehicle_type="Truck",
@@ -72,7 +66,6 @@ def seed():
         db.add_all(vehicles)
         db.flush()
 
-        # ── Drivers ──────────────────────────────────────────────────────
         drivers = [
             Driver(full_name="Marcus Johnson", license_number="DL-1001",
                    license_expiry=date(2027, 6, 15), phone="+1-555-0101",
@@ -96,7 +89,6 @@ def seed():
         db.add_all(drivers)
         db.flush()
 
-        # ── Sample completed trips ───────────────────────────────────────
         now = datetime.now(timezone.utc)
         trips = [
             Trip(vehicle_id=1, driver_id=1, cargo_weight=12000, origin="New York",
@@ -133,7 +125,6 @@ def seed():
             d.completed_trips = db.query(Trip).filter(Trip.driver_id == d.id, Trip.status == "Completed").count()
             d.completion_rate = round((d.completed_trips / d.total_trips * 100) if d.total_trips > 0 else 0, 2)
 
-        # ── Maintenance Logs ─────────────────────────────────────────────
         maint_logs = [
             MaintenanceLog(vehicle_id=6, issue="Engine overhaul", description="Complete engine rebuild",
                            date=date(2026, 1, 10), cost=4500, status="In Progress"),
@@ -147,7 +138,6 @@ def seed():
         # Set vehicle 6 to In Shop (has open maintenance)
         vehicles[5].status = "In Shop"
 
-        # ── Fuel Logs ────────────────────────────────────────────────────
         fuel_logs = [
             FuelLog(vehicle_id=1, trip_id=1, date=date(2026, 1, 5), liters=120, cost=264, odometer_reading=45200),
             FuelLog(vehicle_id=2, trip_id=2, date=date(2026, 1, 12), liters=150, cost=330, odometer_reading=32100),
@@ -157,7 +147,6 @@ def seed():
         ]
         db.add_all(fuel_logs)
 
-        # ── Expenses ─────────────────────────────────────────────────────
         expenses = [
             Expense(vehicle_id=1, trip_id=1, category="Tolls", amount=45, date=date(2026, 1, 5)),
             Expense(vehicle_id=2, trip_id=2, category="Parking", amount=30, date=date(2026, 1, 12)),

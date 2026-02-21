@@ -1,6 +1,3 @@
-/**
- * Reusable KPI card component for dashboards.
- */
 export default function KPICard({ title, value, subtitle, icon: Icon, color = 'blue', trend }) {
   const colorMap = {
     blue: 'from-blue-500 to-blue-600',

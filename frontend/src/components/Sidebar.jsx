@@ -1,6 +1,3 @@
-/**
- * Sidebar navigation – role-aware menu items.
- */
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {

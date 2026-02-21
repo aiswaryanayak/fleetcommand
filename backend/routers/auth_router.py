@@ -1,6 +1,3 @@
-"""
-Auth router – login, token refresh, forgot password, current user.
-"""
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 

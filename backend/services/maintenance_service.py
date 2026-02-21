@@ -1,8 +1,3 @@
-"""
-Maintenance service – manages service logs with automatic vehicle status update.
-Creating a maintenance log moves the vehicle to "In Shop".
-Resolving the log moves the vehicle back to "Available".
-"""
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from models.maintenance import MaintenanceLog, MaintenanceStatus
@@ -43,7 +38,6 @@ def create_log(db: Session, data: MaintenanceLogCreate) -> MaintenanceLog:
     if vehicle.status == VehicleStatus.RETIRED.value:
         raise HTTPException(status_code=400, detail="Cannot create maintenance log for a retired vehicle")
 
-    # ── Atomic: create log + update vehicle status ────────────────────────
     log = MaintenanceLog(**data.model_dump())
     db.add(log)
     vehicle.status = VehicleStatus.IN_SHOP.value

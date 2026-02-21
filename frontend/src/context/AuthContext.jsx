@@ -1,6 +1,3 @@
-/**
- * Auth context – manages JWT token, user state, and role-based access.
- */
 import { createContext, useContext, useState, useEffect } from 'react';
 import { authAPI } from '../services/api';
 

@@ -1,7 +1,3 @@
-/**
- * Trip Dispatcher – full lifecycle management for trips.
- * Create → Dispatch → Complete | Cancel
- */
 import { useState, useEffect } from 'react';
 import { tripsAPI, vehiclesAPI, driversAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';

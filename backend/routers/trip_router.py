@@ -1,11 +1,3 @@
-"""
-Trip router – full lifecycle management with RBAC.
-Dispatcher: full CRUD + lifecycle actions
-Fleet Manager, Financial Analyst: read-only
-
-All write endpoints commit the transaction here (router layer) to ensure
-trip + vehicle + driver status changes are truly atomic.
-"""
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from typing import List

@@ -1,17 +1,10 @@
-"""
-Database engine & session factory.
-Supports SQLite (local dev / hackathon) and PostgreSQL (production).
-Automatically configures connection args based on the DATABASE_URL scheme.
-"""
 from sqlalchemy import create_engine, event
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from config import DATABASE_URL
 
-# ── Detect database backend ──────────────────────────────────────────────────
 _is_sqlite = DATABASE_URL.startswith("sqlite")
 
-# ── Engine ────────────────────────────────────────────────────────────────────
 _connect_args = {"check_same_thread": False} if _is_sqlite else {}
 engine = create_engine(
     DATABASE_URL,
@@ -21,7 +14,6 @@ engine = create_engine(
 )
 
 
-# ── Enable foreign key enforcement for SQLite ────────────────────────────────
 if _is_sqlite:
     @event.listens_for(engine, "connect")
     def _set_sqlite_pragma(dbapi_connection, connection_record):
@@ -31,10 +23,8 @@ if _is_sqlite:
         cursor.close()
 
 
-# ── Session factory ──────────────────────────────────────────────────────────
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# ── Declarative base for models ──────────────────────────────────────────────
 Base = declarative_base()
 
 

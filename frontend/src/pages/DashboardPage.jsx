@@ -1,6 +1,3 @@
-/**
- * Command Center – main dashboard with KPIs, filters, and fleet overview.
- */
 import { useState, useEffect } from 'react';
 import { dashboardAPI } from '../services/api';
 import KPICard from '../components/KPICard';

@@ -1,6 +1,3 @@
-/**
- * API service layer – centralized axios instance with JWT interceptor.
- */
 import axios from 'axios';
 
 const API_BASE = '/api';

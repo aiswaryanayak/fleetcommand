@@ -1,8 +1,3 @@
-"""
-Driver router – CRUD with RBAC and audit logging.
-Safety Officer: full CRUD
-Fleet Manager, Dispatcher: read-only
-"""
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from typing import List

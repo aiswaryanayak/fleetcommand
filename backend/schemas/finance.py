@@ -1,12 +1,8 @@
-"""
-Pydantic schemas for Fuel Logs and Expenses.
-"""
 from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import date, datetime
 
 
-# ── Fuel Log ──────────────────────────────────────────────────────────────────
 class FuelLogCreate(BaseModel):
     vehicle_id: int
     trip_id: Optional[int] = None
@@ -31,7 +27,6 @@ class FuelLogOut(BaseModel):
         from_attributes = True
 
 
-# ── Expense ───────────────────────────────────────────────────────────────────
 class ExpenseCreate(BaseModel):
     vehicle_id: int
     trip_id: Optional[int] = None

@@ -1,9 +1,3 @@
-"""
-Finance router – fuel logs, expenses, and financial analytics with RBAC and audit logging.
-Financial Analyst: full CRUD on fuel/expenses, analytics
-Fleet Manager: read analytics
-Dispatcher: read fuel/expenses
-"""
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from typing import List
@@ -27,7 +21,6 @@ FUEL_WRITE_ROLES = ["financial_analyst"]
 ANALYTICS_ROLES = ["fleet_manager", "financial_analyst"]
 
 
-# ── Fuel Logs ─────────────────────────────────────────────────────────────────
 
 @router.get("/fuel-logs", response_model=List[FuelLogOut])
 def list_fuel_logs(
@@ -66,7 +59,6 @@ def remove_fuel_log(
     return result
 
 
-# ── Expenses ──────────────────────────────────────────────────────────────────
 
 @router.get("/expenses", response_model=List[ExpenseOut])
 def list_expenses(
@@ -106,7 +98,6 @@ def remove_expense(
     return result
 
 
-# ── Analytics ─────────────────────────────────────────────────────────────────
 
 @router.get("/summary")
 def financial_summary(

@@ -1,8 +1,3 @@
-"""
-Vehicle router – CRUD with RBAC and audit logging.
-Fleet Manager: full CRUD
-Dispatcher, Financial Analyst: read-only
-"""
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from typing import List
@@ -19,7 +14,6 @@ from services.audit_service import log_action, Actions
 
 router = APIRouter(prefix="/api/vehicles", tags=["Vehicles"])
 
-# ── Read (fleet_manager, dispatcher, financial_analyst) ───────────────────────
 READ_ROLES = ["fleet_manager", "dispatcher", "financial_analyst"]
 WRITE_ROLES = ["fleet_manager"]
 
