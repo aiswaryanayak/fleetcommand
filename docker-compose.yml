@@ -1,0 +1,19 @@
+# ============================================================================
+# Docker Compose – Local production-like testing
+# Run: docker compose up --build
+# Access: http://localhost:10000
+# ============================================================================
+
+services:
+  fleetcommand:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "10000:10000"
+    environment:
+      - PORT=10000
+      - SECRET_KEY=fleet-mgr-hackathon-secret-key-2026
+      - DATABASE_URL=sqlite:///./fleet_manager.db
+      - CORS_ORIGINS=*
+    restart: unless-stopped

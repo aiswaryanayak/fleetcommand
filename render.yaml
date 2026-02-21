@@ -1,0 +1,19 @@
+# ============================================================================
+# Render.com Blueprint – One-click deploy
+# Deploy: https://render.com/deploy?repo=https://github.com/aiswaryanayak/fleetcommand
+# ============================================================================
+
+services:
+  - type: web
+    name: fleetcommand
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        value: "sqlite:///./fleet_manager.db"
+      - key: CORS_ORIGINS
+        value: "*"
